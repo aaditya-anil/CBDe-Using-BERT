@@ -36,3 +36,4 @@ print("Text:",text)
 print("Hate probability:", hate_prob)
 print("Label:", label)
 
+#working Python BERT --
