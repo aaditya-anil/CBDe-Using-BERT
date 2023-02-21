@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Cyber Crime Detection</title>
+</head>
+<body>
+    <div class="header">
+        <div class="Logo">
+            <img src="{{ url_for('static', filename= 'img/Hermes.png') }}"/>
+            <h3>CBDe</h3>
+        </div>
+        <div class="Navigation_buttons">
+            <ul>
+                <li>About Us</li>
+                <li>Info</li>
+                <li>Visit Cyber India</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main_content">
+        <div class="main_content_left">
+            <h1>Paste your link here!</h1>
+            <form action = "http://localhost:5000/result" method = "POST">
+            <p>Enter Link <input type = "text" name = "urlid" /></p> 
+            <p><input type = "submit" value = "submit" /></p>  
+            </form>       
+        </div>
+        <div class="main_content_right">
+            <img src="{{ url_for('static', filename= 'img/creative-illustration.png') }}" alt="rightimage" width=200px>
+        </div>
+    </div>
+</body>
+</html>
