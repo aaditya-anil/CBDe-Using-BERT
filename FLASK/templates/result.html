@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ready to goo</h1>
+    <table>
+        {% for key, value in result.items() %}
+    
+        <tr>
+           <th> {{ key }} </th>
+           <td> {{ value }} </td>
+        </tr>
+    
+        {% endfor %}
+     </table>
 </body>
 </html>
