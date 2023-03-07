@@ -7,6 +7,8 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 app = Flask(__name__)
 
+app.debug = True
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -14,12 +16,15 @@ def index():
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
-      result = request.form
-      commentretrieve(result["urlid"])
-      return render_template("result.html",result = result)
+      if request.form['button'] == 'YouTube':
+        result = request.form
+        hatecomments = commentretrieve(result["urlid"])
+        return render_template("result.html",result = hatecomments)
+      
 
 
 def commentretrieve(videoid):
+    hatecomments = {'test':'test'}
     # API Key
     api_key = "AIzaSyBYdvFq336sT16dwyq3Zx6MhgsyLea8VVQ"
 
@@ -43,12 +48,17 @@ def commentretrieve(videoid):
         prediction, probabilty = hateornohate(comment)
         probabilty = probabilty * 100
 
+        if (prediction == 'Hate'):
+            hatecomments[comment] = author_id 
+
         print(f"Comment: {comment}\nAuthor Channel ID: {author_id}\nPrediction: {prediction}\nHate Probabilty: {round(probabilty,2)}% \n\n")
     
+    return hatecomments
 
 def hateornohate(comment):
+
     # Load the tokenizer and model
-    tokenizer = AutoTokenizer.from_pretrained("Narrativaai/deberta-v3-small-finetuned-hate_speech18")
+    tokenizer = AutoTokenizer.from_pretrained("Narrativaai/deberta-v3-small-finetuned-hate_speech18", use_fast=False)
     model = AutoModelForSequenceClassification.from_pretrained("Narrativaai/deberta-v3-small-finetuned-hate_speech18")
 
     # Get the text
@@ -84,3 +94,5 @@ def hateornohate(comment):
     print("Label:", label)
 
     #working Python BERT --
+
+##EOF

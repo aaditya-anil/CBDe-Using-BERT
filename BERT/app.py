@@ -2,12 +2,13 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 # Load the tokenizer and model
-tokenizer = AutoTokenizer.from_pretrained("Narrativaai/deberta-v3-small-finetuned-hate_speech18")
+tokenizer = AutoTokenizer.from_pretrained("Narrativaai/deberta-v3-small-finetuned-hate_speech18", use_fast=False)
+
 model = AutoModelForSequenceClassification.from_pretrained("Narrativaai/deberta-v3-small-finetuned-hate_speech18")
 
 # Get the text
 print("\n\n\n\n\n")
-text = input("Enter your text:")
+text = "ok, so do we need to kill them too or are the slavs okay ? for some reason whenever i hear the word slav , the word slobber comes to mind and i picture a slobbering half breed creature like the humpback of notre dame or Igor haha"
 
 # Encode the text into a tensor
 input_ids = torch.tensor(tokenizer.encode(text)).unsqueeze(0)  # Batch size 1
