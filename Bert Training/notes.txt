@@ -1,0 +1,5 @@
+- Used Kaggle for dataset
+- Didnt use stop word removal and punctuations cause bert can learn from it.
+- Dont clean data heavily. It actually worsens acc
+- Datasets imported using dataset module (more efficient)
+-

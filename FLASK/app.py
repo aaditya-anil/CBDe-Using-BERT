@@ -20,8 +20,6 @@ def result():
         result = request.form
         hatecomments = commentretrieve(result["urlid"])
         return render_template("result.html",result = hatecomments)
-      
-
 
 def commentretrieve(videoid):
     hatecomments = {'test':'test'}

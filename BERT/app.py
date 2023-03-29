@@ -8,8 +8,7 @@ model = AutoModelForSequenceClassification.from_pretrained("Narrativaai/deberta-
 
 # Get the text
 print("\n\n\n\n\n")
-text = "ok, so do we need to kill them too or are the slavs okay ? for some reason whenever i hear the word slav , the word slobber comes to mind and i picture a slobbering half breed creature like the humpback of notre dame or Igor haha"
-
+text = input("enter text: ")
 # Encode the text into a tensor
 input_ids = torch.tensor(tokenizer.encode(text)).unsqueeze(0)  # Batch size 1
 
@@ -33,7 +32,7 @@ else:
     label = "No hate"
 
 
-print("Text:",text)
+
 print("Hate probability:", hate_prob)
 print("Label:", label)
 
