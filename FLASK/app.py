@@ -16,13 +16,13 @@ def index():
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
-      if request.form['button'] == 'YouTube':
+      if request.form['button'] == 'Click Here':
         result = request.form
         hatecomments = commentretrieve(result["urlid"])
         return render_template("result.html",result = hatecomments)
 
 def commentretrieve(videoid):
-    hatecomments = {'test':'test'}
+    hatecomments = {}
     # API Key
     api_key = "AIzaSyBYdvFq336sT16dwyq3Zx6MhgsyLea8VVQ"
 
