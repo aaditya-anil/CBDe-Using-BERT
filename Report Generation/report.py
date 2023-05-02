@@ -82,7 +82,7 @@ def maketable():
 
     c = canvas.Canvas("a.pdf", pagesize=A4)
     table.wrapOn(c, width, height)
-    table.drawOn(c, *coord(1.8, 9.6, cm))
+    table.drawOn(c, *coord(1.8, 20.6, cm))
     c.save()
 
 firstpage()

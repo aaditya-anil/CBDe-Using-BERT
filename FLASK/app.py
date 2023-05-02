@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file, url_for, jsonify
 from googleapiclient.discovery import build
 import json
 import torch
@@ -31,6 +31,11 @@ def result():
         result = request.form
         hatecomments = commentretrieve(result["urlid"])
         return render_template("result.html",result = hatecomments)
+      
+@app.route('/download')
+def download():
+    path = 'finalresult.pdf'
+    return send_file(path, as_attachment=True)
 
 def commentretrieve(videoid):
     hatecomments = {}
